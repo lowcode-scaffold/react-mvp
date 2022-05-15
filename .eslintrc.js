@@ -14,6 +14,7 @@ module.exports = {
   },
   plugins: ['prettier', 'react', '@typescript-eslint'],
   rules: {
+    'prettier/prettier': 'error',
     'react/react-in-jsx-scope': 'off',
     'react/jsx-filename-extension': 'off',
     'import/no-unresolved': 'off',
@@ -25,5 +26,6 @@ module.exports = {
     'react/destructuring-assignment': 'off',
     'react/function-component-definition': 'off',
     'no-param-reassign': 'off',
+    'import/prefer-default-export': 'off',
   },
 };
