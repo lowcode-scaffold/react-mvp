@@ -1,6 +1,13 @@
 import { defineConfig } from 'umi';
 
+const define = {
+  ENV: 'local',
+  USE_MOCK: false,
+  API_HOST: 'http://127.0.0.1:3000',
+};
+
 export default defineConfig({
+  define,
   nodeModulesTransform: {
     type: 'none',
   },
