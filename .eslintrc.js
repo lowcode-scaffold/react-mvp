@@ -27,5 +27,8 @@ module.exports = {
     'react/function-component-definition': 'off',
     'no-param-reassign': 'off',
     'import/prefer-default-export': 'off',
+    'no-underscore-dangle': 'off',
+    'no-use-before-define': 'off',
+    'no-unused-vars': 'off',
   },
 };
