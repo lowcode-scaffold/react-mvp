@@ -33,11 +33,13 @@
     "react": "17.x",
     "react-dom": "17.x",
     "umi": "^3.5.20",
-    "use-immer": "0.5.2"
+    "use-immer": "0.5.2",
+    "use-sync-external-store": "^1.2.0"
   },
   "devDependencies": {
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "@types/use-sync-external-store": "^0.0.3",
     "@typescript-eslint/eslint-plugin": "^5.9.0",
     "@typescript-eslint/parser": "^5.9.0",
     "@umijs/preset-react": "1.x",
