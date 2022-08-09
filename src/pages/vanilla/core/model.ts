@@ -5,7 +5,7 @@ const emitter = mitt();
 
 type UpdateFn<S> = (state: S) => void;
 
-export abstract class Model<T> {
+export abstract class MVPModel<T> {
   private _state!: T;
 
   private id = uniqueID();

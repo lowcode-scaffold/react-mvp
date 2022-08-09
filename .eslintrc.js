@@ -30,5 +30,6 @@ module.exports = {
     'no-underscore-dangle': 'off',
     'no-use-before-define': 'off',
     'no-unused-vars': 'off',
+    'no-useless-constructor': 'off',
   },
 };

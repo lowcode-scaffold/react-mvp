@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useSyncExternalStore } from 'use-sync-external-store/shim';
-import { Model } from './model';
+import { MVPModel } from './model';
 
-export function useModel<T>(model: Model<T>) {
+export function useModel<T>(model: MVPModel<T>) {
   const state = useSyncExternalStore(
     (...args) => {
       const unsubscribe = model.subscribe(...args);
@@ -19,7 +19,5 @@ export function useModel<T>(model: Model<T>) {
     // };
   }, []);
 
-  return {
-    state,
-  };
+  return state;
 }
