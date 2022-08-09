@@ -1,6 +1,6 @@
 import { Modal, Form, Input, Select } from 'antd';
 import React from 'react';
-import { Model } from './model';
+import { IState } from './model';
 import usePresenter from './presenter';
 
 export type Props = {
@@ -8,12 +8,12 @@ export type Props = {
   title: '创建' | '编辑';
   onCancel: () => void;
   onOk: () => void;
-  data?: Model['data'];
+  data?: IState['data'];
 };
 
 const EditModal: React.FC<Props> = (props) => {
   const presenter = usePresenter(props);
-  const { model } = presenter;
+  const { model, state } = presenter;
   return (
     <Modal
       visible={props.visible}
@@ -27,14 +27,14 @@ const EditModal: React.FC<Props> = (props) => {
         presenter.handleSubmit();
       }}
       okButtonProps={{
-        loading: model.loading,
+        loading: state.loading,
       }}
     >
       <div>
         <Form labelCol={{ span: 4 }} wrapperCol={{ span: 16 }}>
           <Form.Item label="姓名" required>
             <Input
-              value={model.data?.name}
+              value={state.data?.name}
               autoComplete="off"
               onChange={(e) => {
                 const { value } = e.target;
@@ -44,7 +44,7 @@ const EditModal: React.FC<Props> = (props) => {
           </Form.Item>
           <Form.Item label="年龄" required>
             <Input
-              value={model.data?.age}
+              value={state.data?.age}
               autoComplete="off"
               onChange={(e) => {
                 const { value } = e.target;
@@ -54,7 +54,7 @@ const EditModal: React.FC<Props> = (props) => {
           </Form.Item>
           <Form.Item label="电话" required>
             <Input
-              value={model.data?.mobile}
+              value={state.data?.mobile}
               autoComplete="off"
               onChange={(e) => {
                 const { value } = e.target;
@@ -65,8 +65,8 @@ const EditModal: React.FC<Props> = (props) => {
           <Form.Item label="tags">
             <Select
               mode="tags"
-              value={model.data?.tags}
-              options={model.tagOptions}
+              value={state.data?.tags}
+              options={state.tagOptions}
               onChange={(value) => {
                 presenter.handleFormChange('tags', value);
               }}
@@ -74,7 +74,7 @@ const EditModal: React.FC<Props> = (props) => {
           </Form.Item>
           <Form.Item label="住址">
             <Input
-              value={model.data?.address}
+              value={state.data?.address}
               autoComplete="off"
               onChange={(e) => {
                 const { value } = e.target;

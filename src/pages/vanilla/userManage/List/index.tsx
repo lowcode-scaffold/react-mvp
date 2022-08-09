@@ -3,7 +3,7 @@ import { ColumnsType } from 'antd/lib/table';
 import { PlusOutlined } from '@ant-design/icons';
 import usePresenter from './presenter';
 import styles from './index.module.less';
-// import EditModal from './EditModal';
+import EditModal from './EditModal';
 
 function Index() {
   const presenter = usePresenter();
@@ -140,22 +140,22 @@ function Index() {
         />
       </div>
 
-      {/* <EditModal
-        visible={model.modalInfo.visible}
-        data={model.modalInfo.data}
-        title={model.modalInfo.title}
+      <EditModal
+        visible={state.modalInfo.visible}
+        data={state.modalInfo.data}
+        title={state.modalInfo.title}
         onCancel={() => {
-          model.setModalInfo((s) => {
-            s.visible = false;
+          model.setState((s) => {
+            s.modalInfo.visible = false;
           });
         }}
         onOk={() => {
-          model.setModalInfo((s) => {
-            s.visible = false;
+          model.setState((s) => {
+            s.modalInfo.visible = false;
           });
           presenter.refresh();
         }}
-      /> */}
+      />
     </div>
   );
 }

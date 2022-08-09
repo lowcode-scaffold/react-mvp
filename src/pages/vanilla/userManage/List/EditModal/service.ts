@@ -9,49 +9,61 @@ export default class Service {
   }
 
   init(data: IState['data']) {
-    this.model.setData(data || ({} as any));
+    this.model.setState((s) => {
+      s.data = data || ({} as any);
+    });
     if (data && data.tags) {
-      this.model.settagOptions(
-        data.tags.map((s) => ({
-          label: s,
-          value: s,
-        })),
-      );
+      this.model.setState((s) => {
+        s.tagOptions = data.tags.map((tag) => ({
+          label: tag,
+          value: tag,
+        }));
+      });
     } else {
-      this.model.settagOptions([]);
+      this.model.setState((s) => {
+        s.tagOptions = [];
+      });
     }
   }
 
   changeForm(name: string, value: any) {
-    this.model.setData((s: any) => {
-      s[name] = value;
+    this.model.setState((s: any) => {
+      s.data[name] = value;
     });
   }
 
   async createUser() {
-    this.model.setLoading(true);
+    this.model.setState((s) => {
+      s.loading = true;
+    });
     await createUser({
-      name: this.model.data!.name,
-      age: this.model.data!.age,
-      mobile: this.model.data!.mobile,
-      tags: this.model.data?.tags,
-      address: this.model.data?.address,
+      name: this.model.state.data!.name,
+      age: this.model.state.data!.age,
+      mobile: this.model.state.data!.mobile,
+      tags: this.model.state.data?.tags,
+      address: this.model.state.data?.address,
     }).finally(() => {
-      this.model.setLoading(false);
+      this.model.setState((s) => {
+        s.loading = false;
+      });
     });
   }
 
   async editUser() {
-    this.model.setLoading(true);
+    this.model.setState((s) => {
+      s.loading = true;
+    });
     await editUser({
-      name: this.model.data!.name,
-      age: this.model.data!.age,
-      mobile: this.model.data!.mobile,
-      tags: this.model.data?.tags,
-      address: this.model.data?.address,
-      id: this.model.data!.id,
+      name: this.model.state.data!.name,
+      age: this.model.state.data!.age,
+      mobile: this.model.state.data!.mobile,
+      tags: this.model.state.data?.tags,
+      address: this.model.state.data?.address,
+      id: this.model.state.data!.id,
     }).finally(() => {
-      this.model.setLoading(false);
+      this.model.setState((s) => {
+        s.loading = false;
+      });
     });
   }
 }
