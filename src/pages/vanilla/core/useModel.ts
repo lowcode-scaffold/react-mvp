@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useSyncExternalStore } from 'use-sync-external-store/shim';
 import { MVPModel } from './model';
 
@@ -10,14 +9,6 @@ export function useModel<T>(model: MVPModel<T>) {
     },
     () => model.state,
   );
-
-  useEffect(() => {
-    // const m = model;
-    // m.__init();
-    // return () => {
-    //   m?.__destroy();
-    // };
-  }, []);
 
   return state;
 }
