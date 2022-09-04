@@ -2,7 +2,16 @@ import { createUser, editUser } from '../api';
 import { Model } from './model';
 
 export default class Service {
+  private static _indstance: Service | null = null;
+
   private model: Model;
+
+  static single(model: Model) {
+    if (!Service._indstance) {
+      Service._indstance = new Service(model);
+    }
+    return Service._indstance;
+  }
 
   constructor(model: Model) {
     this.model = model;

@@ -6,7 +6,7 @@ import Service from './service';
 
 const usePresenter = (props: Props) => {
   const model = useModel();
-  const service = new Service(model);
+  const service = Service.single(model);
 
   useEffect(() => {
     if (props.visible) {
